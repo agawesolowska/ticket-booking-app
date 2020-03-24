@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Seat reservation system for a multiplex - REST service.
+ * Ticket booking app - seat reservation system for a cinema (REST service).
  * 
  * @author Aga Wesołowska
  *

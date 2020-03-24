@@ -15,7 +15,7 @@
 	<artifactId>Ticket-Booking-App</artifactId>
 	<version>1.0</version>
 	<name>Ticket Booking App</name>
-	<description>Seat reservation system for a multiplex - REST service</description>
+	<description>Seat reservation system for a cinema (REST service)</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
