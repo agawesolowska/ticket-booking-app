@@ -54,6 +54,6 @@ public class Customer {
 	private String emailAddress;
 	
 	@OneToMany(mappedBy = "customer")
-	private Set<Ticket> tickets;
+	private Set<Booking> bookings;
 
 }

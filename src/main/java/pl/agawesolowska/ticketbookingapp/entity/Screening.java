@@ -1,7 +1,6 @@
 package pl.agawesolowska.ticketbookingapp.entity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -35,18 +34,18 @@ public class Screening {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "screening_date")
-	private LocalDate screeningDate;
+	private Date screeningDate;
 
 	@Temporal(TemporalType.TIME)
 	@Column(name = "screening_time")
-	private LocalTime screeningTime;
+	private Date screeningTime;
 
 	@ManyToOne
 	@JoinColumn(name = "room_id")
 	private Room room;
 
 	@OneToMany(mappedBy = "screening")
-	private Set<Ticket> tickets;
+	private Set<Booking> bookings;
 
 	@ManyToOne
 	@JoinColumn(name = "movie_id")

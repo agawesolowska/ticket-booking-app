@@ -19,6 +19,9 @@ public class Seat {
 	@Column(name = "number")
 	private int number;
 	
+	@Column(name = "reserved", nullable = false)
+	private boolean reserved;
+	
 	@ManyToOne
 	@JoinColumn(name = "row_id")
 	private Row row;

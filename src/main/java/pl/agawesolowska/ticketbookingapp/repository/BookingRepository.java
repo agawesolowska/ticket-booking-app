@@ -2,12 +2,12 @@ package pl.agawesolowska.ticketbookingapp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import pl.agawesolowska.ticketbookingapp.entity.Ticket;
+import pl.agawesolowska.ticketbookingapp.entity.Booking;
 
 /**
  * @author Aga Wesołowska
  *
  */
-public interface TicketRepository extends JpaRepository<Ticket, Long> {
+public interface BookingRepository extends JpaRepository<Booking, Long> {
 
 }
