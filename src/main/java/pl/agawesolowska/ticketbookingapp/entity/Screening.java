@@ -1,6 +1,7 @@
 package pl.agawesolowska.ticketbookingapp.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,11 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author Aga Wesołowska
@@ -24,7 +22,7 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "screening")
-@Getter @Setter
+@Getter
 public class Screening {
 
 	@Id
@@ -32,13 +30,15 @@ public class Screening {
 	@Column(name = "id")
 	private Long id;
 
-	@Temporal(TemporalType.DATE)
 	@Column(name = "screening_date")
-	private Date screeningDate;
+	private LocalDate screeningDate;
 
-	@Temporal(TemporalType.TIME)
 	@Column(name = "screening_time")
-	private Date screeningTime;
+	private LocalTime screeningTime;
+
+	@ManyToOne
+	@JoinColumn(name = "movie_id")
+	private Movie movie; 
 
 	@ManyToOne
 	@JoinColumn(name = "room_id")
@@ -47,8 +47,4 @@ public class Screening {
 	@OneToMany(mappedBy = "screening")
 	private Set<Booking> bookings;
 
-	@ManyToOne
-	@JoinColumn(name = "movie_id")
-	private Movie movie; 
-	
 }

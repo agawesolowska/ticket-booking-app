@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author Aga Wesołowska
@@ -19,7 +18,7 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "cinema")
-@Getter @Setter
+@Getter
 public class Cinema {
 
 	@Id
