@@ -30,17 +30,12 @@ type_of_ticket ticket_type DEFAULT 'adult',
 row_id BIGINT REFERENCES row (id)
 );
 
-CREATE TABLE movie (
-id BIGSERIAL PRIMARY KEY,
-title VARCHAR(65) NOT NULL,
-duration_time_in_minutes INTEGER NOT NULL
-);
-
 CREATE TABLE screening (
 id BIGSERIAL PRIMARY KEY,
 screening_date DATE NOT NULL,
 screening_time TIME NOT NULL,
-movie_id BIGINT REFERENCES movie (id),
+movie_title VARCHAR(65) NOT NULL,
+duration_time_in_minutes INTEGER NOT NULL,
 room_id BIGINT REFERENCES room (id)
 );
 

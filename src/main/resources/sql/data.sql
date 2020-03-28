@@ -18,16 +18,17 @@ INSERT INTO row (row_index, number_of_seats, room_id) VALUES (3, 20, 3);
 
 -- Seats - TBD
 
-INSERT INTO movie (title, duration_time_in_minutes) VALUES ('Parasite', 132);
-INSERT INTO movie (title, duration_time_in_minutes) VALUES ('Joker', 122);
-INSERT INTO movie (title, duration_time_in_minutes) VALUES ('Once Upon a Time... in Hollywood', 161);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-01', '18:00:00', 'Joker', 122, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-01', '20:30:00', 'Ad Astra', 124, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-02', '16:30:00', 'Once Upon a Time... in Hollywood', 161, 1);
 
-INSERT INTO screening (screening_date, screening_time, movie_id, room_id) VALUES ('2020-04-01', '18:00:00', 1, 1);
-INSERT INTO screening (screening_date, screening_time, movie_id, room_id) VALUES ('2020-04-01', '20:30:00', 2, 1);
-INSERT INTO screening (screening_date, screening_time, movie_id, room_id) VALUES ('2020-04-01', '15:00:00', 3, 2);
-INSERT INTO screening (screening_date, screening_time, movie_id, room_id) VALUES ('2020-04-02', '15:30:00', 1, 2);
-INSERT INTO screening (screening_date, screening_time, movie_id, room_id) VALUES ('2020-04-02', '16:00:00', 2, 3);
-INSERT INTO screening (screening_date, screening_time, movie_id, room_id) VALUES ('2020-04-02', '18:30:00', 3, 3);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-01', '15:00:00', 'Parasite', 132, 2);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-02', '15:30:00', 'Green Book', 130, 2);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-02', '18:30:00', 'Contagion', 105, 2);
+
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-02', '16:00:00', 'Parasite', 132, 3);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-03', '18:30:00', 'Joker', 122, 3);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-04', '18:30:00', 'Ad Astra', 124, 3);
 
 INSERT INTO customer (first_name, last_name, email_address) VALUES ('Jacqueline', 'Ashbe', 'jashbe0@oracle.com');
 INSERT INTO customer (first_name, last_name, email_address) VALUES ('Kati', 'Deener', 'kdeener5@amazon.com');

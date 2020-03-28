@@ -36,9 +36,11 @@ public class Screening {
 	@Column(name = "screening_time")
 	private LocalTime screeningTime;
 
-	@ManyToOne
-	@JoinColumn(name = "movie_id")
-	private Movie movie; 
+	@Column(name = "movie_title")
+	private String movieTitle;
+
+	@Column(name = "duration_time_in_minutes")
+	private int durationTimeInMinutes;
 
 	@ManyToOne
 	@JoinColumn(name = "room_id")

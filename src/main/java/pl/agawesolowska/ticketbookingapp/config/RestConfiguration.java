@@ -14,7 +14,6 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 
 import pl.agawesolowska.ticketbookingapp.entity.Cinema;
-import pl.agawesolowska.ticketbookingapp.entity.Movie;
 import pl.agawesolowska.ticketbookingapp.entity.Room;
 import pl.agawesolowska.ticketbookingapp.entity.Row;
 import pl.agawesolowska.ticketbookingapp.entity.Screening;
@@ -41,10 +40,6 @@ public class RestConfiguration implements RepositoryRestConfigurer {
 		// disabling HTTP methods for selected entities: POST, PUT, DELETE
 
 		config.getExposureConfiguration().forDomainType(Cinema.class)
-				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
-				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
-
-		config.getExposureConfiguration().forDomainType(Movie.class)
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
