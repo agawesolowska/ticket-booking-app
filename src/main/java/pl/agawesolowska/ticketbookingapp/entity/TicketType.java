@@ -17,4 +17,16 @@ public enum TicketType {
 
 	private BigDecimal price;
 
+	public String toString(TicketType type) {
+		switch (type) {
+		case adult:
+			return "25 PLN";
+		case student:
+			return "18 PLN";
+		case child:
+			return "12.50 PLN";
+		}
+		return "Invalid ticket type.";
+	}
+
 }

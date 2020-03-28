@@ -29,8 +29,8 @@ public class RestConfiguration implements RepositoryRestConfigurer {
 	private EntityManager entityManager;
 
 	@Autowired
-	public RestConfiguration(EntityManager theEntityManager) {
-		entityManager = theEntityManager;
+	public RestConfiguration(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 
 	@Override
