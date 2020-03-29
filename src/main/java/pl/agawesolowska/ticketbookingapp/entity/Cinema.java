@@ -30,6 +30,6 @@ public class Cinema {
 	private String name;
 
 	@OneToMany(mappedBy = "cinema")
-	private Set<Room> rooms;
+	private Set<Screening> screenings;
 
 }

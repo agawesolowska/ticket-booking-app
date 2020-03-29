@@ -7,8 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,14 +33,10 @@ public class Room {
 	@Column(name = "name")
 	private String name;
 
-	@ManyToOne
-	@JoinColumn(name = "cinema_id")
-	private Cinema cinema;
-
 	@OneToMany(mappedBy = "room")
 	private Set<Row> rows;
 
-	@OneToMany(mappedBy = "room")
+	@ManyToMany(mappedBy = "screeningRooms")
 	private Set<Screening> screenings;
 
 }

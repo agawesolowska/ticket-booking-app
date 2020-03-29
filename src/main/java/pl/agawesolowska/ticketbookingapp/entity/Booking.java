@@ -1,21 +1,26 @@
 package pl.agawesolowska.ticketbookingapp.entity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.mail.SimpleMailMessage;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 /**
  * @author Aga Wesołowska
@@ -23,7 +28,9 @@ import lombok.Getter;
  */
 @Entity
 @Table(name = "booking")
+@RequiredArgsConstructor
 @Getter
+@Setter
 public class Booking {
 
 	@Id
@@ -36,7 +43,7 @@ public class Booking {
 	@Column(name = "booking_timestamp")
 	private LocalDateTime bookingTimestamp;
 
-	// TODO setter in case of booking 
+	// TODO setter in case of booking
 	@Column(name = "is_confirmed")
 	private boolean isConfirmed;
 
@@ -45,16 +52,13 @@ public class Booking {
 	@Column(name = "confirmation_code")
 	private UUID confirmationCode;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "screening_id")
-	private Screening screening;
+	@OneToMany(mappedBy = "booking")
+	private Set<Seat> seats;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "customer_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private Customer customer;
-	
-	// TODO seats !!!
-	
+
 	// TODO methods of total amount to pay and reservation expiration time
 
 	public SimpleMailMessage confirmationMailMessage() {
@@ -62,7 +66,8 @@ public class Booking {
 		message.setTo(customer.getEmailAddress());
 		message.setSubject("Booking confirmation");
 		message.setText(confirmationCode.toString());
+		// TODO total amount to pay, reservation exp time, confirmation link
 		return message;
 	}
-	
+
 }

@@ -10,8 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -43,10 +44,11 @@ public class Screening {
 	private int durationTimeInMinutes;
 
 	@ManyToOne
-	@JoinColumn(name = "room_id")
-	private Room room;
+	@JoinColumn(name = "cinema_id")
+	private Cinema cinema;
 
-	@OneToMany(mappedBy = "screening")
-	private Set<Booking> bookings;
+	@ManyToMany
+	@JoinTable(name = "screening_room", joinColumns = @JoinColumn(name = "screening_id"), inverseJoinColumns = @JoinColumn(name = "room_id"))
+	Set<Room> screeningRooms;
 
 }

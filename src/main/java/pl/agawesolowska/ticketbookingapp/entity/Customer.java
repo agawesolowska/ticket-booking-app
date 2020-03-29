@@ -1,13 +1,11 @@
 package pl.agawesolowska.ticketbookingapp.entity;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -50,7 +48,7 @@ public class Customer {
 	@Column(name = "email_address")
 	private String emailAddress;
 
-	@OneToMany(mappedBy = "customer")
-	private Set<Booking> bookings;
+	@OneToOne(mappedBy = "customer")
+	private Booking booking;
 
 }

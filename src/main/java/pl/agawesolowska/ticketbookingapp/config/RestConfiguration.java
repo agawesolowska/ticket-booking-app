@@ -17,6 +17,7 @@ import pl.agawesolowska.ticketbookingapp.entity.Cinema;
 import pl.agawesolowska.ticketbookingapp.entity.Room;
 import pl.agawesolowska.ticketbookingapp.entity.Row;
 import pl.agawesolowska.ticketbookingapp.entity.Screening;
+import pl.agawesolowska.ticketbookingapp.entity.Seat;
 
 /**
  * @author Aga Wesołowska
@@ -43,6 +44,10 @@ public class RestConfiguration implements RepositoryRestConfigurer {
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
+		config.getExposureConfiguration().forDomainType(Screening.class)
+				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
+				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
+
 		config.getExposureConfiguration().forDomainType(Room.class)
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
@@ -51,7 +56,7 @@ public class RestConfiguration implements RepositoryRestConfigurer {
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
-		config.getExposureConfiguration().forDomainType(Screening.class)
+		config.getExposureConfiguration().forDomainType(Seat.class)
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
