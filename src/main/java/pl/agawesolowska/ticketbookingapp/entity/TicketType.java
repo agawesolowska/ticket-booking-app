@@ -17,6 +17,20 @@ public enum TicketType {
 
 	private BigDecimal price;
 
+	public void setWeekendPrice(TicketType type) {
+		switch (type) {
+		case adult:
+			this.price = BigDecimal.valueOf(29);
+			break;
+		case student:
+			this.price = BigDecimal.valueOf(22);
+			break;
+		case child:
+			this.price = BigDecimal.valueOf(16.50);
+			break;
+		}
+	}
+
 	public String toString(TicketType type) {
 		switch (type) {
 		case adult:

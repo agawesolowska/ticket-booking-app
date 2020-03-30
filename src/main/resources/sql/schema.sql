@@ -2,6 +2,21 @@ CREATE DATABASE ticket_booking_app;
 
 CREATE TYPE ticket_type AS ENUM ('adult', 'student', 'child');
 
+CREATE TABLE customer (
+id BIGSERIAL PRIMARY KEY,
+first_name VARCHAR(65) NOT NULL,
+last_name VARCHAR(65) NOT NULL,
+email_address VARCHAR(65) NOT NULL,
+voucher VARCHAR(15) DEFAULT NULL
+);
+
+CREATE TABLE booking (
+id BIGSERIAL PRIMARY KEY,
+creation_date_time TIMESTAMP DEFAULT NULL,
+booking_code UUID DEFAULT NULL,
+customer_id BIGINT REFERENCES customer (id)
+);
+
 CREATE TABLE cinema (
 id BIGSERIAL PRIMARY KEY,
 name VARCHAR(65) NOT NULL
@@ -22,6 +37,11 @@ number INTEGER NOT NULL,
 name VARCHAR(65) NOT NULL
 );
 
+CREATE TABLE screening_room (
+screening_id BIGINT REFERENCES screening (id),
+room_id BIGINT REFERENCES room (id)
+);
+
 CREATE TABLE row (
 id BIGSERIAL PRIMARY KEY,
 row_index INTEGER NOT NULL,
@@ -36,25 +56,4 @@ is_reserved BOOLEAN DEFAULT FALSE,
 type_of_ticket ticket_type DEFAULT 'adult',
 row_id BIGINT REFERENCES row (id),
 booking_id BIGINT REFERENCES booking (id)
-);
-
-
-CREATE TABLE customer (
-id BIGSERIAL PRIMARY KEY,
-first_name VARCHAR(65) NOT NULL,
-last_name VARCHAR(65) NOT NULL,
-email_address VARCHAR(65) NOT NULL
-);
-
-CREATE TABLE booking (
-id BIGSERIAL PRIMARY KEY,
-booking_timestamp TIMESTAMP DEFAULT NULL,
-is_confirmed BOOLEAN DEFAULT FALSE,
-confirmation_code UUID DEFAULT NULL,
-customer_id BIGINT REFERENCES customer (id)
-);
-
-CREATE TABLE screening_room (
-screening_id BIGINT REFERENCES screening (screening_id),
-room_id BIGINT REFERENCES room (room_id)
 );

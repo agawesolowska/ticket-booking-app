@@ -47,6 +47,10 @@ public class Customer {
 	@Email(regexp = "^(.+)@(.+)$", message = "The email address is invalid.")
 	@Column(name = "email_address")
 	private String emailAddress;
+	
+	@Pattern(regexp = "^[A-Z]{4}/[0-9]{4}$", message = "The voucher code is invalid.")
+	@Column(name = "voucher")
+	private String voucher;
 
 	@OneToOne(mappedBy = "customer")
 	private Booking booking;

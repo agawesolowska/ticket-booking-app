@@ -43,6 +43,7 @@ public class Seat {
 	@JoinColumn(name = "row_id")
 	private Row row;
 
+	// TODO setter in case of booking
 	@ManyToOne
 	@JoinColumn(name = "booking_id")
 	private Booking booking;

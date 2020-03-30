@@ -29,8 +29,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "booking")
 @RequiredArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
 public class Booking {
 
 	@Id
@@ -38,19 +37,13 @@ public class Booking {
 	@Column(name = "id")
 	private Long id;
 
-	// TODO setter in case of booking
 	@CreationTimestamp
-	@Column(name = "booking_timestamp")
-	private LocalDateTime bookingTimestamp;
+	@Column(name = "creation_date_time")
+	private LocalDateTime creationDateTime;
 
 	// TODO setter in case of booking
-	@Column(name = "is_confirmed")
-	private boolean isConfirmed;
-
-	// TODO setter in case of booking
-	// TODO change to link !!!
-	@Column(name = "confirmation_code")
-	private UUID confirmationCode;
+	@Column(name = "booking_code")
+	private UUID bookingCode;
 
 	@OneToMany(mappedBy = "booking")
 	private Set<Seat> seats;
@@ -65,8 +58,8 @@ public class Booking {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(customer.getEmailAddress());
 		message.setSubject("Booking confirmation");
-		message.setText(confirmationCode.toString());
-		// TODO total amount to pay, reservation exp time, confirmation link
+		message.setText(bookingCode.toString());
+		// TODO total amount to pay and reservation expiration time
 		return message;
 	}
 
