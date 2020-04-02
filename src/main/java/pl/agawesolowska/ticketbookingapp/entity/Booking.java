@@ -19,8 +19,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.mail.SimpleMailMessage;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 /**
  * @author Aga Wesołowska
@@ -28,8 +26,7 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "booking")
-@RequiredArgsConstructor
-@Getter @Setter
+@Getter
 public class Booking {
 
 	@Id
@@ -41,7 +38,6 @@ public class Booking {
 	@Column(name = "creation_date_time")
 	private LocalDateTime creationDateTime;
 
-	// TODO setter in case of booking
 	@Column(name = "booking_code")
 	private UUID bookingCode;
 
@@ -51,6 +47,12 @@ public class Booking {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private Customer customer;
+
+	public Booking(Set<Seat> seats, Customer customer) {
+		this.bookingCode = UUID.randomUUID();
+		this.seats = seats;
+		this.customer = customer;
+	}
 
 	// TODO methods of total amount to pay and reservation expiration time
 

@@ -49,6 +49,6 @@ public class Screening {
 
 	@ManyToMany
 	@JoinTable(name = "screening_room", joinColumns = @JoinColumn(name = "screening_id"), inverseJoinColumns = @JoinColumn(name = "room_id"))
-	Set<Room> screeningRooms;
+	private Set<Room> screeningRooms;
 
 }

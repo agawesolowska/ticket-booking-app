@@ -30,11 +30,9 @@ public class Seat {
 	@Column(name = "number")
 	private int number;
 
-	// TODO setter in case of booking
 	@Column(name = "is_reserved")
 	private boolean isReserved;
 
-	// TODO setter in case of booking
 	@Enumerated(EnumType.STRING)
 	@Column(name = "type_of_ticket")
 	private TicketType ticketType;
@@ -43,9 +41,20 @@ public class Seat {
 	@JoinColumn(name = "row_id")
 	private Row row;
 
-	// TODO setter in case of booking
 	@ManyToOne
 	@JoinColumn(name = "booking_id")
 	private Booking booking;
+
+	public void setIsReservedToTrue() {
+		this.isReserved = true;
+	}
+
+	public void setTicketType(TicketType ticketType) {
+		this.ticketType = ticketType;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
 
 }

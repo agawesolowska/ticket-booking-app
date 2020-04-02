@@ -13,7 +13,9 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 
+import pl.agawesolowska.ticketbookingapp.entity.Booking;
 import pl.agawesolowska.ticketbookingapp.entity.Cinema;
+import pl.agawesolowska.ticketbookingapp.entity.Customer;
 import pl.agawesolowska.ticketbookingapp.entity.Room;
 import pl.agawesolowska.ticketbookingapp.entity.Row;
 import pl.agawesolowska.ticketbookingapp.entity.Screening;
@@ -26,7 +28,7 @@ import pl.agawesolowska.ticketbookingapp.entity.Seat;
 @Configuration
 public class RestConfiguration implements RepositoryRestConfigurer {
 
-	private EntityManager entityManager;
+	private final EntityManager entityManager;
 
 	@Autowired
 	public RestConfiguration(EntityManager entityManager) {
@@ -36,15 +38,19 @@ public class RestConfiguration implements RepositoryRestConfigurer {
 	@Override
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 
-		HttpMethod[] unsupportedActions = { HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE };
+		HttpMethod[] unsupportedActions = {HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE};
 
-		// disabling HTTP methods for selected entities: POST, PUT, DELETE
+		// disabling HTTP methods for the entities below: POST, PUT, DELETE
+
+		config.getExposureConfiguration().forDomainType(Booking.class)
+				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
+				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
 		config.getExposureConfiguration().forDomainType(Cinema.class)
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
-		config.getExposureConfiguration().forDomainType(Screening.class)
+		config.getExposureConfiguration().forDomainType(Customer.class)
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
@@ -53,6 +59,10 @@ public class RestConfiguration implements RepositoryRestConfigurer {
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 
 		config.getExposureConfiguration().forDomainType(Row.class)
+				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
+				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
+
+		config.getExposureConfiguration().forDomainType(Screening.class)
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
 

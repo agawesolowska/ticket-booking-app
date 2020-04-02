@@ -1,7 +1,5 @@
 CREATE DATABASE ticket_booking_app;
 
-CREATE TYPE ticket_type AS ENUM ('adult', 'student', 'child');
-
 CREATE TABLE customer (
 id BIGSERIAL PRIMARY KEY,
 first_name VARCHAR(65) NOT NULL,
@@ -53,7 +51,7 @@ CREATE TABLE seat (
 id BIGSERIAL PRIMARY KEY,
 number INTEGER NOT NULL,
 is_reserved BOOLEAN DEFAULT FALSE,
-type_of_ticket ticket_type DEFAULT 'adult',
+type_of_ticket VARCHAR(65) DEFAULT 'ADULT',
 row_id BIGINT REFERENCES row (id),
 booking_id BIGINT REFERENCES booking (id)
 );
