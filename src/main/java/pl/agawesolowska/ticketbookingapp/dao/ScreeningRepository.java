@@ -1,4 +1,4 @@
-package pl.agawesolowska.ticketbookingapp.repository;
+package pl.agawesolowska.ticketbookingapp.dao;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import pl.agawesolowska.ticketbookingapp.entity.Screening;
+import pl.agawesolowska.ticketbookingapp.model.entity.Screening;
 
 /**
  * @author Aga Wesołowska

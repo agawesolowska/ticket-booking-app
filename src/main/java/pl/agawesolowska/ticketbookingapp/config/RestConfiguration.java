@@ -13,13 +13,13 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 
-import pl.agawesolowska.ticketbookingapp.entity.Booking;
-import pl.agawesolowska.ticketbookingapp.entity.Cinema;
-import pl.agawesolowska.ticketbookingapp.entity.Customer;
-import pl.agawesolowska.ticketbookingapp.entity.Room;
-import pl.agawesolowska.ticketbookingapp.entity.Row;
-import pl.agawesolowska.ticketbookingapp.entity.Screening;
-import pl.agawesolowska.ticketbookingapp.entity.Seat;
+import pl.agawesolowska.ticketbookingapp.model.entity.Booking;
+import pl.agawesolowska.ticketbookingapp.model.entity.Cinema;
+import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
+import pl.agawesolowska.ticketbookingapp.model.entity.Room;
+import pl.agawesolowska.ticketbookingapp.model.entity.Row;
+import pl.agawesolowska.ticketbookingapp.model.entity.Screening;
+import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 
 /**
  * @author Aga Wesołowska

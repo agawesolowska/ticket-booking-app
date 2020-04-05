@@ -1,22 +1,12 @@
-package pl.agawesolowska.ticketbookingapp.entity;
+package pl.agawesolowska.ticketbookingapp.model.entity;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.mail.SimpleMailMessage;
 
 import lombok.Getter;
 
@@ -52,17 +42,6 @@ public class Booking {
 		this.bookingCode = UUID.randomUUID();
 		this.seats = seats;
 		this.customer = customer;
-	}
-
-	// TODO methods of total amount to pay and reservation expiration time
-
-	public SimpleMailMessage confirmationMailMessage() {
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo(customer.getEmailAddress());
-		message.setSubject("Booking confirmation");
-		message.setText(bookingCode.toString());
-		// TODO total amount to pay and reservation expiration time
-		return message;
 	}
 
 }

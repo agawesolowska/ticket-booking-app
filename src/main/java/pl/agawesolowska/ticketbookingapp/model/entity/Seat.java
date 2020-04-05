@@ -1,17 +1,9 @@
-package pl.agawesolowska.ticketbookingapp.entity;
+package pl.agawesolowska.ticketbookingapp.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Getter;
+import pl.agawesolowska.ticketbookingapp.model.TicketType;
 
 /**
  * @author Aga Wesołowska
@@ -34,7 +26,7 @@ public class Seat {
 	private boolean isReserved;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "type_of_ticket")
+	@Column(name = "ticket_type")
 	private TicketType ticketType;
 
 	@ManyToOne

@@ -51,7 +51,7 @@ CREATE TABLE seat (
 id BIGSERIAL PRIMARY KEY,
 number INTEGER NOT NULL,
 is_reserved BOOLEAN DEFAULT FALSE,
-type_of_ticket VARCHAR(65) DEFAULT 'ADULT',
+ticket_type VARCHAR(65) DEFAULT 'ADULT',
 row_id BIGINT REFERENCES row (id),
 booking_id BIGINT REFERENCES booking (id)
 );

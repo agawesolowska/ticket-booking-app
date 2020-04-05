@@ -1,11 +1,11 @@
 INSERT INTO cinema (name) VALUES ('Royal Cinema');
 
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-01', '15:00:00', 'Parasite', 132, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-01', '18:00:00', 'Joker', 122, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-01', '20:30:00', 'Ad Astra', 124, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-02', '15:30:00', 'Green Book', 130, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-02', '16:30:00', 'Once Upon a Time... in Hollywood', 161, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-02', '21:00:00', 'Contagion', 105, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-11', '15:00:00', 'Parasite', 132, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-11', '18:00:00', 'Joker', 122, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-11', '20:30:00', 'Ad Astra', 124, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-12', '15:30:00', 'Green Book', 130, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-12', '16:30:00', 'Once Upon a Time... in Hollywood', 161, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-12', '21:00:00', 'Contagion', 105, 1);
 
 INSERT INTO room (number, name) VALUES (1, 'Toronto');
 INSERT INTO room (number, name) VALUES (2, 'Ontario');

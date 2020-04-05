@@ -1,6 +1,8 @@
-package pl.agawesolowska.ticketbookingapp.entity;
+package pl.agawesolowska.ticketbookingapp.model;
 
 import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
 
@@ -11,7 +13,14 @@ import lombok.Getter;
 @Getter
 public enum TicketType {
 
-	ADULT(BigDecimal.valueOf(25)), STUDENT(BigDecimal.valueOf(18)), CHILD(BigDecimal.valueOf(12.50));
+	@JsonProperty("adult")
+	ADULT(BigDecimal.valueOf(25)),
+	
+	@JsonProperty("student")
+	STUDENT(BigDecimal.valueOf(18)),
+	
+	@JsonProperty("child")
+	CHILD(BigDecimal.valueOf(12.50));
 
 	private BigDecimal price;
 
