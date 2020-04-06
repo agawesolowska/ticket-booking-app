@@ -1,14 +1,16 @@
 package pl.agawesolowska.ticketbookingapp.facade;
 
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import pl.agawesolowska.ticketbookingapp.model.TicketType;
+import pl.agawesolowska.ticketbookingapp.model.SeatReservation;
 import pl.agawesolowska.ticketbookingapp.model.dto.BookingRequestDTO;
+import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
 import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 import pl.agawesolowska.ticketbookingapp.service.BookingService;
 import pl.agawesolowska.ticketbookingapp.service.CustomerService;
@@ -34,15 +36,20 @@ public class BookingFacade {
 
 	public void seatReservation(@Valid BookingRequestDTO bookingRequestDTO) {
 
-		for (Map.Entry<Seat, TicketType> entry : bookingRequestDTO.getTickets().entrySet()) {
-			Seat seatToReserve = entry.getKey();
-			TicketType ticketToReserve = entry.getValue();
-			seatService.reserveSeat(seatToReserve.getId(), ticketToReserve);
+		Set<Seat> seats = new HashSet<>();
+
+		Set<SeatReservation> seatReservations = bookingRequestDTO.getTickets();
+
+		for (SeatReservation reservation : seatReservations) {
+			Seat seatToReserve = reservation.getSeat();
+			seatService.reserveSeat(seatToReserve.getId(), reservation.getTicketType());
+			seats.add(seatToReserve);
 		}
 
-		bookingService.saveBooking(bookingRequestDTO.getTickets().keySet(), bookingRequestDTO.getCustomer());
+		Customer customer = bookingRequestDTO.getCustomer();
+		customerService.saveCustomer(customer);
 
-		customerService.saveCustomer(bookingRequestDTO.getCustomer());
+		bookingService.saveBooking(seats, customer);
 
 	}
 

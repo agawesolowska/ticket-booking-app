@@ -1,14 +1,13 @@
 package pl.agawesolowska.ticketbookingapp.model.dto;
 
-import java.util.Map;
+import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.agawesolowska.ticketbookingapp.model.TicketType;
+import pl.agawesolowska.ticketbookingapp.model.SeatReservation;
 import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
-import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 
 /**
  * @author Aga Wesołowska
@@ -18,7 +17,7 @@ import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 public class BookingRequestDTO {
 
 	@NotNull
-	private Map<Seat, TicketType> tickets;
+	private Set<SeatReservation> tickets;
 
 	@NotNull
 	private Customer customer;
