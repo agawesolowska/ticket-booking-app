@@ -1,7 +1,5 @@
 package pl.agawesolowska.ticketbookingapp.service;
 
-import java.util.Set;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import pl.agawesolowska.ticketbookingapp.dao.BookingRepository;
 import pl.agawesolowska.ticketbookingapp.model.entity.Booking;
-import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
-import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 
 /**
  * @author Aga Wesołowska
@@ -27,11 +23,8 @@ public class BookingService {
 	}
 
 	@Transactional
-	public Booking saveBooking(Set<Seat> seats, Customer customer) {
-
-		Booking booking = new Booking(seats, customer);
+	public Booking saveBooking(Booking booking) {
 		return bookingRepository.save(booking);
-
 	}
 
 }

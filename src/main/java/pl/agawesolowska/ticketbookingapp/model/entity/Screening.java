@@ -35,11 +35,10 @@ public class Screening {
 	private int durationTimeInMinutes;
 
 	@ManyToOne
-	@JoinColumn(name = "cinema_id")
-	private Cinema cinema;
+	@JoinColumn(name = "room_id")
+	private Room room;
 
-	@ManyToMany
-	@JoinTable(name = "screening_room", joinColumns = @JoinColumn(name = "screening_id"), inverseJoinColumns = @JoinColumn(name = "room_id"))
-	private Set<Room> screeningRooms;
-
+	@OneToMany(mappedBy = "screening")
+	private Set<Row> rows;
+	
 }

@@ -24,6 +24,6 @@ public class Cinema {
 	private String name;
 
 	@OneToMany(mappedBy = "cinema")
-	private Set<Screening> screenings;
+	private Set<Room> rooms;
 
 }

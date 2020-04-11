@@ -1,15 +1,12 @@
 package pl.agawesolowska.ticketbookingapp.facade;
 
-import java.util.HashSet;
 import java.util.Set;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import pl.agawesolowska.ticketbookingapp.model.SeatReservation;
 import pl.agawesolowska.ticketbookingapp.model.dto.BookingRequestDTO;
+import pl.agawesolowska.ticketbookingapp.model.entity.Booking;
 import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
 import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 import pl.agawesolowska.ticketbookingapp.service.BookingService;
@@ -34,26 +31,24 @@ public class BookingFacade {
 		this.seatService = seatService;
 	}
 
-	public void seatReservation(@Valid BookingRequestDTO bookingRequestDTO) {
+	public void seatReservation(BookingRequestDTO bookingRequestDTO) {
 
-		Set<Seat> seats = new HashSet<>();
+		Set<Seat> seatReservations = bookingRequestDTO.getSeatReservations();
 
-		Set<SeatReservation> seatReservations = bookingRequestDTO.getTickets();
-
-		for (SeatReservation reservation : seatReservations) {
-			Seat seatToReserve = reservation.getSeat();
-			seatService.reserveSeat(seatToReserve.getId(), reservation.getTicketType());
-			seats.add(seatToReserve);
+		for (Seat seatReservation : seatReservations) {
+			seatService.reserveSeat(seatReservation.getId(), seatReservation.getTicketType());
 		}
 
 		Customer customer = bookingRequestDTO.getCustomer();
 		customerService.saveCustomer(customer);
 
-		bookingService.saveBooking(seats, customer);
+		Booking booking = new Booking(seatReservations, customer);
+		bookingService.saveBooking(booking);
 
+		seatService.saveReservation(seatReservations, booking);
+		
 	}
 
 	// TODO methods of total amount to pay and reservation expiration time
 
-	// TODO zapisać booking do miejsca !!!
 }

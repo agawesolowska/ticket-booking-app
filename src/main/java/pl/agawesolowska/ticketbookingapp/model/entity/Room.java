@@ -25,11 +25,12 @@ public class Room {
 
 	@Column(name = "name")
 	private String name;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "cinema_id")
+	private Cinema cinema;
+	
 	@OneToMany(mappedBy = "room")
-	private Set<Row> rows;
-
-	@ManyToMany(mappedBy = "screeningRooms")
 	private Set<Screening> screenings;
 
 }

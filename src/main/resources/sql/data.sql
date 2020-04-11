@@ -1,34 +1,39 @@
 INSERT INTO cinema (name) VALUES ('Royal Cinema');
 
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-11', '15:00:00', 'Parasite', 132, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-11', '18:00:00', 'Joker', 122, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-11', '20:30:00', 'Ad Astra', 124, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-12', '15:30:00', 'Green Book', 130, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-12', '16:30:00', 'Once Upon a Time... in Hollywood', 161, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, cinema_id) VALUES ('2020-04-12', '21:00:00', 'Contagion', 105, 1);
+INSERT INTO room (number, name, cinema_id) VALUES (1, 'Toronto', 1);
+INSERT INTO room (number, name, cinema_id) VALUES (2, 'Ontario', 1);
+INSERT INTO room (number, name, cinema_id) VALUES (3, 'Canada', 1);
 
-INSERT INTO room (number, name) VALUES (1, 'Toronto');
-INSERT INTO room (number, name) VALUES (2, 'Ontario');
-INSERT INTO room (number, name) VALUES (3, 'Canada');
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21', '15:00:00', 'Parasite', 132, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21', '18:00:00', 'Joker', 122, 1);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21', '20:30:00', 'Ad Astra', 124, 2);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22', '15:30:00', 'Green Book', 130, 2);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22', '16:30:00', 'Once Upon a Time... in Hollywood', 161, 3);
+INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22', '21:00:00', 'Contagion', 105, 3);
 
-INSERT INTO screening_room (screening_id, room_id) VALUES (1, 1);
-INSERT INTO screening_room (screening_id, room_id) VALUES (2, 1);
-INSERT INTO screening_room (screening_id, room_id) VALUES (3, 2);
-INSERT INTO screening_room (screening_id, room_id) VALUES (4, 2);
-INSERT INTO screening_room (screening_id, room_id) VALUES (5, 3);
-INSERT INTO screening_room (screening_id, room_id) VALUES (6, 3);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (1, 10, 1);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (2, 10, 1);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (3, 10, 1);
 
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (1, 10, 1);
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (2, 15, 1);
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (3, 20, 1);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (1, 10, 2);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (2, 10, 2);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (3, 10, 2);
 
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (1, 10, 2);
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (2, 15, 2);
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (3, 20, 2);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (1, 10, 3);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (2, 10, 3);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (3, 10, 3);
 
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (1, 10, 3);
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (2, 15, 3);
-INSERT INTO row (row_index, number_of_seats, room_id) VALUES (3, 20, 3);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (1, 10, 4);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (2, 10, 4);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (3, 10, 4);
+
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (1, 10, 5);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (2, 10, 5);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (3, 10, 5);
+
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (1, 10, 6);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (2, 10, 6);
+INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (3, 10, 6);
 
 INSERT INTO seat (number, row_id) VALUES (1, 1);
 INSERT INTO seat (number, row_id) VALUES (2, 1);
@@ -51,11 +56,6 @@ INSERT INTO seat (number, row_id) VALUES (7, 2);
 INSERT INTO seat (number, row_id) VALUES (8, 2);
 INSERT INTO seat (number, row_id) VALUES (9, 2);
 INSERT INTO seat (number, row_id) VALUES (10, 2);
-INSERT INTO seat (number, row_id) VALUES (11, 2);
-INSERT INTO seat (number, row_id) VALUES (12, 2);
-INSERT INTO seat (number, row_id) VALUES (13, 2);
-INSERT INTO seat (number, row_id) VALUES (14, 2);
-INSERT INTO seat (number, row_id) VALUES (15, 2);
 
 INSERT INTO seat (number, row_id) VALUES (1, 3);
 INSERT INTO seat (number, row_id) VALUES (2, 3);
@@ -67,16 +67,6 @@ INSERT INTO seat (number, row_id) VALUES (7, 3);
 INSERT INTO seat (number, row_id) VALUES (8, 3);
 INSERT INTO seat (number, row_id) VALUES (9, 3);
 INSERT INTO seat (number, row_id) VALUES (10, 3);
-INSERT INTO seat (number, row_id) VALUES (11, 3);
-INSERT INTO seat (number, row_id) VALUES (12, 3);
-INSERT INTO seat (number, row_id) VALUES (13, 3);
-INSERT INTO seat (number, row_id) VALUES (14, 3);
-INSERT INTO seat (number, row_id) VALUES (15, 3);
-INSERT INTO seat (number, row_id) VALUES (16, 3);
-INSERT INTO seat (number, row_id) VALUES (17, 3);
-INSERT INTO seat (number, row_id) VALUES (18, 3);
-INSERT INTO seat (number, row_id) VALUES (19, 3);
-INSERT INTO seat (number, row_id) VALUES (20, 3);
 
 INSERT INTO seat (number, row_id) VALUES (1, 4);
 INSERT INTO seat (number, row_id) VALUES (2, 4);
@@ -99,11 +89,6 @@ INSERT INTO seat (number, row_id) VALUES (7, 5);
 INSERT INTO seat (number, row_id) VALUES (8, 5);
 INSERT INTO seat (number, row_id) VALUES (9, 5);
 INSERT INTO seat (number, row_id) VALUES (10, 5);
-INSERT INTO seat (number, row_id) VALUES (11, 5);
-INSERT INTO seat (number, row_id) VALUES (12, 5);
-INSERT INTO seat (number, row_id) VALUES (13, 5);
-INSERT INTO seat (number, row_id) VALUES (14, 5);
-INSERT INTO seat (number, row_id) VALUES (15, 5);
 
 INSERT INTO seat (number, row_id) VALUES (1, 6);
 INSERT INTO seat (number, row_id) VALUES (2, 6);
@@ -115,16 +100,6 @@ INSERT INTO seat (number, row_id) VALUES (7, 6);
 INSERT INTO seat (number, row_id) VALUES (8, 6);
 INSERT INTO seat (number, row_id) VALUES (9, 6);
 INSERT INTO seat (number, row_id) VALUES (10, 6);
-INSERT INTO seat (number, row_id) VALUES (11, 6);
-INSERT INTO seat (number, row_id) VALUES (12, 6);
-INSERT INTO seat (number, row_id) VALUES (13, 6);
-INSERT INTO seat (number, row_id) VALUES (14, 6);
-INSERT INTO seat (number, row_id) VALUES (15, 6);
-INSERT INTO seat (number, row_id) VALUES (16, 6);
-INSERT INTO seat (number, row_id) VALUES (17, 6);
-INSERT INTO seat (number, row_id) VALUES (18, 6);
-INSERT INTO seat (number, row_id) VALUES (19, 6);
-INSERT INTO seat (number, row_id) VALUES (20, 6);
 
 INSERT INTO seat (number, row_id) VALUES (1, 7);
 INSERT INTO seat (number, row_id) VALUES (2, 7);
@@ -147,11 +122,6 @@ INSERT INTO seat (number, row_id) VALUES (7, 8);
 INSERT INTO seat (number, row_id) VALUES (8, 8);
 INSERT INTO seat (number, row_id) VALUES (9, 8);
 INSERT INTO seat (number, row_id) VALUES (10, 8);
-INSERT INTO seat (number, row_id) VALUES (11, 8);
-INSERT INTO seat (number, row_id) VALUES (12, 8);
-INSERT INTO seat (number, row_id) VALUES (13, 8);
-INSERT INTO seat (number, row_id) VALUES (14, 8);
-INSERT INTO seat (number, row_id) VALUES (15, 8);
 
 INSERT INTO seat (number, row_id) VALUES (1, 9);
 INSERT INTO seat (number, row_id) VALUES (2, 9);
@@ -163,13 +133,102 @@ INSERT INTO seat (number, row_id) VALUES (7, 9);
 INSERT INTO seat (number, row_id) VALUES (8, 9);
 INSERT INTO seat (number, row_id) VALUES (9, 9);
 INSERT INTO seat (number, row_id) VALUES (10, 9);
-INSERT INTO seat (number, row_id) VALUES (11, 9);
-INSERT INTO seat (number, row_id) VALUES (12, 9);
-INSERT INTO seat (number, row_id) VALUES (13, 9);
-INSERT INTO seat (number, row_id) VALUES (14, 9);
-INSERT INTO seat (number, row_id) VALUES (15, 9);
-INSERT INTO seat (number, row_id) VALUES (16, 9);
-INSERT INTO seat (number, row_id) VALUES (17, 9);
-INSERT INTO seat (number, row_id) VALUES (18, 9);
-INSERT INTO seat (number, row_id) VALUES (19, 9);
-INSERT INTO seat (number, row_id) VALUES (20, 9);
+
+INSERT INTO seat (number, row_id) VALUES (1, 10);
+INSERT INTO seat (number, row_id) VALUES (2, 10);
+INSERT INTO seat (number, row_id) VALUES (3, 10);
+INSERT INTO seat (number, row_id) VALUES (4, 10);
+INSERT INTO seat (number, row_id) VALUES (5, 10);
+INSERT INTO seat (number, row_id) VALUES (6, 10);
+INSERT INTO seat (number, row_id) VALUES (7, 10);
+INSERT INTO seat (number, row_id) VALUES (8, 10);
+INSERT INTO seat (number, row_id) VALUES (9, 10);
+INSERT INTO seat (number, row_id) VALUES (10, 10);
+
+INSERT INTO seat (number, row_id) VALUES (1, 11);
+INSERT INTO seat (number, row_id) VALUES (2, 11);
+INSERT INTO seat (number, row_id) VALUES (3, 11);
+INSERT INTO seat (number, row_id) VALUES (4, 11);
+INSERT INTO seat (number, row_id) VALUES (5, 11);
+INSERT INTO seat (number, row_id) VALUES (6, 11);
+INSERT INTO seat (number, row_id) VALUES (7, 11);
+INSERT INTO seat (number, row_id) VALUES (8, 11);
+INSERT INTO seat (number, row_id) VALUES (9, 11);
+INSERT INTO seat (number, row_id) VALUES (10, 11);
+
+INSERT INTO seat (number, row_id) VALUES (1, 12);
+INSERT INTO seat (number, row_id) VALUES (2, 12);
+INSERT INTO seat (number, row_id) VALUES (3, 12);
+INSERT INTO seat (number, row_id) VALUES (4, 12);
+INSERT INTO seat (number, row_id) VALUES (5, 12);
+INSERT INTO seat (number, row_id) VALUES (6, 12);
+INSERT INTO seat (number, row_id) VALUES (7, 12);
+INSERT INTO seat (number, row_id) VALUES (8, 12);
+INSERT INTO seat (number, row_id) VALUES (9, 12);
+INSERT INTO seat (number, row_id) VALUES (10, 12);
+
+INSERT INTO seat (number, row_id) VALUES (1, 13);
+INSERT INTO seat (number, row_id) VALUES (2, 13);
+INSERT INTO seat (number, row_id) VALUES (3, 13);
+INSERT INTO seat (number, row_id) VALUES (4, 13);
+INSERT INTO seat (number, row_id) VALUES (5, 13);
+INSERT INTO seat (number, row_id) VALUES (6, 13);
+INSERT INTO seat (number, row_id) VALUES (7, 13);
+INSERT INTO seat (number, row_id) VALUES (8, 13);
+INSERT INTO seat (number, row_id) VALUES (9, 13);
+INSERT INTO seat (number, row_id) VALUES (10, 13);
+
+INSERT INTO seat (number, row_id) VALUES (1, 14);
+INSERT INTO seat (number, row_id) VALUES (2, 14);
+INSERT INTO seat (number, row_id) VALUES (3, 14);
+INSERT INTO seat (number, row_id) VALUES (4, 14);
+INSERT INTO seat (number, row_id) VALUES (5, 14);
+INSERT INTO seat (number, row_id) VALUES (6, 14);
+INSERT INTO seat (number, row_id) VALUES (7, 14);
+INSERT INTO seat (number, row_id) VALUES (8, 14);
+INSERT INTO seat (number, row_id) VALUES (9, 14);
+INSERT INTO seat (number, row_id) VALUES (10, 14);
+
+INSERT INTO seat (number, row_id) VALUES (1, 15);
+INSERT INTO seat (number, row_id) VALUES (2, 15);
+INSERT INTO seat (number, row_id) VALUES (3, 15);
+INSERT INTO seat (number, row_id) VALUES (4, 15);
+INSERT INTO seat (number, row_id) VALUES (5, 15);
+INSERT INTO seat (number, row_id) VALUES (6, 15);
+INSERT INTO seat (number, row_id) VALUES (7, 15);
+INSERT INTO seat (number, row_id) VALUES (8, 15);
+INSERT INTO seat (number, row_id) VALUES (9, 15);
+INSERT INTO seat (number, row_id) VALUES (10, 15);
+
+INSERT INTO seat (number, row_id) VALUES (1, 16);
+INSERT INTO seat (number, row_id) VALUES (2, 16);
+INSERT INTO seat (number, row_id) VALUES (3, 16);
+INSERT INTO seat (number, row_id) VALUES (4, 16);
+INSERT INTO seat (number, row_id) VALUES (5, 16);
+INSERT INTO seat (number, row_id) VALUES (6, 16);
+INSERT INTO seat (number, row_id) VALUES (7, 16);
+INSERT INTO seat (number, row_id) VALUES (8, 16);
+INSERT INTO seat (number, row_id) VALUES (9, 16);
+INSERT INTO seat (number, row_id) VALUES (10, 16);
+
+INSERT INTO seat (number, row_id) VALUES (1, 17);
+INSERT INTO seat (number, row_id) VALUES (2, 17);
+INSERT INTO seat (number, row_id) VALUES (3, 17);
+INSERT INTO seat (number, row_id) VALUES (4, 17);
+INSERT INTO seat (number, row_id) VALUES (5, 17);
+INSERT INTO seat (number, row_id) VALUES (6, 17);
+INSERT INTO seat (number, row_id) VALUES (7, 17);
+INSERT INTO seat (number, row_id) VALUES (8, 17);
+INSERT INTO seat (number, row_id) VALUES (9, 17);
+INSERT INTO seat (number, row_id) VALUES (10, 17);
+
+INSERT INTO seat (number, row_id) VALUES (1, 18);
+INSERT INTO seat (number, row_id) VALUES (2, 18);
+INSERT INTO seat (number, row_id) VALUES (3, 18);
+INSERT INTO seat (number, row_id) VALUES (4, 18);
+INSERT INTO seat (number, row_id) VALUES (5, 18);
+INSERT INTO seat (number, row_id) VALUES (6, 18);
+INSERT INTO seat (number, row_id) VALUES (7, 18);
+INSERT INTO seat (number, row_id) VALUES (8, 18);
+INSERT INTO seat (number, row_id) VALUES (9, 18);
+INSERT INTO seat (number, row_id) VALUES (10, 18);

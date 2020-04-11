@@ -20,23 +20,19 @@ id BIGSERIAL PRIMARY KEY,
 name VARCHAR(65) NOT NULL
 );
 
+CREATE TABLE room (
+id BIGSERIAL PRIMARY KEY,
+number INTEGER NOT NULL,
+name VARCHAR(65) NOT NULL,
+cinema_id BIGINT REFERENCES cinema (id)
+);
+
 CREATE TABLE screening (
 id BIGSERIAL PRIMARY KEY,
 screening_date DATE NOT NULL,
 screening_time TIME NOT NULL,
 movie_title VARCHAR(65) NOT NULL,
 duration_time_in_minutes INTEGER NOT NULL,
-cinema_id BIGINT REFERENCES cinema (id)
-);
-
-CREATE TABLE room (
-id BIGSERIAL PRIMARY KEY,
-number INTEGER NOT NULL,
-name VARCHAR(65) NOT NULL
-);
-
-CREATE TABLE screening_room (
-screening_id BIGINT REFERENCES screening (id),
 room_id BIGINT REFERENCES room (id)
 );
 
@@ -44,7 +40,7 @@ CREATE TABLE row (
 id BIGSERIAL PRIMARY KEY,
 row_index INTEGER NOT NULL,
 number_of_seats INTEGER NOT NULL,
-room_id BIGINT REFERENCES room (id)
+screening_id BIGINT REFERENCES screening (id)
 );
 
 CREATE TABLE seat (

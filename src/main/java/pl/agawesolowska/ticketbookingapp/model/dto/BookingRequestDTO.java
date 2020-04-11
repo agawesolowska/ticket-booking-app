@@ -6,8 +6,8 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.agawesolowska.ticketbookingapp.model.SeatReservation;
 import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
+import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 
 /**
  * @author Aga Wesołowska
@@ -17,7 +17,7 @@ import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
 public class BookingRequestDTO {
 
 	@NotNull
-	private Set<SeatReservation> tickets;
+	private Set<Seat> seatReservations;
 
 	@NotNull
 	private Customer customer;

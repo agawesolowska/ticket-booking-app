@@ -27,8 +27,8 @@ public class Row {
 	private int numberOfSeats;
 
 	@ManyToOne
-	@JoinColumn(name = "room_id")
-	private Room room;
+	@JoinColumn(name = "screening_id")
+	private Screening screening;
 	
 	@OneToMany(mappedBy = "row")
 	private Set<Seat> seats;
