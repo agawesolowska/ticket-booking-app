@@ -4,12 +4,12 @@ INSERT INTO room (number, name, cinema_id) VALUES (1, 'Toronto', 1);
 INSERT INTO room (number, name, cinema_id) VALUES (2, 'Ontario', 1);
 INSERT INTO room (number, name, cinema_id) VALUES (3, 'Canada', 1);
 
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21', '15:00:00', 'Parasite', 132, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21', '18:00:00', 'Joker', 122, 1);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21', '20:30:00', 'Ad Astra', 124, 2);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22', '15:30:00', 'Green Book', 130, 2);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22', '16:30:00', 'Once Upon a Time... in Hollywood', 161, 3);
-INSERT INTO screening (screening_date, screening_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22', '21:00:00', 'Contagion', 105, 3);
+INSERT INTO screening (screening_date_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21 15:00:00', 'Parasite', 132, 1);
+INSERT INTO screening (screening_date_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21 18:00:00', 'Joker', 122, 1);
+INSERT INTO screening (screening_date_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-21 20:30:00', 'Ad Astra', 124, 2);
+INSERT INTO screening (screening_date_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22 15:30:00', 'Green Book', 130, 2);
+INSERT INTO screening (screening_date_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22 16:30:00', 'Once Upon a Time... in Hollywood', 161, 3);
+INSERT INTO screening (screening_date_time, movie_title, duration_time_in_minutes, room_id) VALUES ('2020-04-22 21:00:00', 'Contagion', 105, 3);
 
 INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (1, 10, 1);
 INSERT INTO row (row_index, number_of_seats, screening_id) VALUES (2, 10, 1);

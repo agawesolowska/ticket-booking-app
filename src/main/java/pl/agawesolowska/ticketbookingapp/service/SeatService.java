@@ -32,18 +32,17 @@ public class SeatService {
 
 		Optional<Seat> optionalSeat = seatRepository.findById(id);
 		if (optionalSeat.isEmpty()) {
-			throw new IllegalArgumentException("The ID value is invalid.");
+			throw new IllegalArgumentException("The seat ID is invalid.");
 		} else {
 			Seat seat = optionalSeat.get();
 			if (seat.isReserved()) {
-				throw new IllegalArgumentException("The seat already reserved.");
+				throw new IllegalArgumentException("Seat already reserved.");
 			} else {
 				seat.setIsReservedToTrue();
 				seat.setTicketType(ticketType);
 				return seat;
 			}
 		}
-
 	}
 
 	@Transactional

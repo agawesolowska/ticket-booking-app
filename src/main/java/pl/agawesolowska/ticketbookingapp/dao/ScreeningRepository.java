@@ -1,7 +1,6 @@
 package pl.agawesolowska.ticketbookingapp.dao;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +16,9 @@ import pl.agawesolowska.ticketbookingapp.model.entity.Screening;
  */
 public interface ScreeningRepository extends JpaRepository<Screening, Long> {
 
-	Page<Screening> findByScreeningDateAndScreeningTimeBetween(
-			@RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
-			@RequestParam("startTime") @DateTimeFormat(pattern = "HH:mm:ss") LocalTime startTime,
-			@RequestParam("endTime") @DateTimeFormat(pattern = "HH:mm:ss") LocalTime endTime, Pageable pageable);
+	Page<Screening> findByScreeningDateTimeBetween(
+			@RequestParam("startDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime startDateTime,
+			@RequestParam("endDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime endDateTime,
+			Pageable pageable);
 
 }

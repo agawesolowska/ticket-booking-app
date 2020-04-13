@@ -1,7 +1,6 @@
 package pl.agawesolowska.ticketbookingapp.model.entity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -22,11 +21,8 @@ public class Screening {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "screening_date")
-	private LocalDate screeningDate;
-
-	@Column(name = "screening_time")
-	private LocalTime screeningTime;
+	@Column(name = "screening_date_time")
+	private LocalDateTime screeningDateTime;
 
 	@Column(name = "movie_title")
 	private String movieTitle;
@@ -40,5 +36,9 @@ public class Screening {
 
 	@OneToMany(mappedBy = "screening")
 	private Set<Row> rows;
-	
+
+	public LocalDateTime getScreeningExpirationDateTime() {
+		return screeningDateTime.minusMinutes(15);
+	}
+
 }

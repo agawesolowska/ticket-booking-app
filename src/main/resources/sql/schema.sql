@@ -29,8 +29,7 @@ cinema_id BIGINT REFERENCES cinema (id)
 
 CREATE TABLE screening (
 id BIGSERIAL PRIMARY KEY,
-screening_date DATE NOT NULL,
-screening_time TIME NOT NULL,
+screening_date_time TIMESTAMP NOT NULL,
 movie_title VARCHAR(65) NOT NULL,
 duration_time_in_minutes INTEGER NOT NULL,
 room_id BIGINT REFERENCES room (id)
