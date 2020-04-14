@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import pl.agawesolowska.ticketbookingapp.facade.BookingFacade;
 import pl.agawesolowska.ticketbookingapp.model.dto.BookingRequestDTO;
+import pl.agawesolowska.ticketbookingapp.model.dto.BookingResultDTO;
 
 /**
  * @author Aga Wesołowska
@@ -24,9 +25,8 @@ public class BookingRestController {
 	}
 
 	@PostMapping
-	public @ResponseBody String addCustomerBooking(@Valid @RequestBody BookingRequestDTO bookingRequestDTO) {
-		bookingFacade.addCustomerBooking(bookingRequestDTO);
-		return "test"; // TODO change to BookingResultDTO !!!
+	public @ResponseBody BookingResultDTO addCustomerBooking(@Valid @RequestBody BookingRequestDTO bookingRequestDTO) {
+		return bookingFacade.addCustomerBooking(bookingRequestDTO);
 	}
 
 }

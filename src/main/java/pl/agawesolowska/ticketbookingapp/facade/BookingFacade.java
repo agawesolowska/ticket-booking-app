@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import pl.agawesolowska.ticketbookingapp.model.dto.BookingRequestDTO;
+import pl.agawesolowska.ticketbookingapp.model.dto.BookingResultDTO;
 import pl.agawesolowska.ticketbookingapp.model.entity.Booking;
 import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
 import pl.agawesolowska.ticketbookingapp.model.entity.Screening;
@@ -40,7 +41,7 @@ public class BookingFacade {
 		this.seatService = seatService;
 	}
 
-	public void addCustomerBooking(BookingRequestDTO bookingRequestDTO) {
+	public BookingResultDTO addCustomerBooking(BookingRequestDTO bookingRequestDTO) {
 
 		Screening screening = screeningService.getScreeningById(bookingRequestDTO.getScreening().getId());
 		screeningService.checkWhetherReservationIsPossible(screening);
@@ -73,9 +74,8 @@ public class BookingFacade {
 			totalCost = totalCost.multiply(BigDecimal.valueOf(0.5));
 		}
 
-		System.out.println(totalCost);
-		System.out.println(screening.getScreeningExpirationDateTime());
-
+		BookingResultDTO bookingResultDTO = new BookingResultDTO(totalCost, screening.getScreeningExpirationDateTime());
+		return bookingResultDTO;
 	}
 
 }
