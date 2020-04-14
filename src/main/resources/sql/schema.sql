@@ -4,7 +4,7 @@ CREATE TABLE customer (
 id BIGSERIAL PRIMARY KEY,
 first_name VARCHAR(65) NOT NULL,
 last_name VARCHAR(65) NOT NULL,
-email_address VARCHAR(65) NOT NULL,
+email_address VARCHAR(65) NOT NULL UNIQUE,
 voucher VARCHAR(15) DEFAULT NULL
 );
 

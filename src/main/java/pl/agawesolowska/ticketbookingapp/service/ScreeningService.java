@@ -26,12 +26,18 @@ public class ScreeningService {
 	}
 
 	@Transactional
-	public boolean checkWhetherReservationIsPossible(Long id) {
-
+	public Screening getScreeningById(Long id) {
 		Optional<Screening> optionalScreening = screeningRepository.findById(id);
 		if (optionalScreening.isEmpty()) {
 			throw new IllegalArgumentException("The screening ID is invalid.");
-		} else if (LocalDateTime.now().isAfter(optionalScreening.get().getScreeningExpirationDateTime())) {
+		} else {
+			return optionalScreening.get();
+		}
+	}
+
+	@Transactional
+	public boolean checkWhetherReservationIsPossible(Screening screening) {
+		if (LocalDateTime.now().isAfter(screening.getScreeningExpirationDateTime())) {
 			throw new IllegalArgumentException(
 					"Reservation is not possible. Seats can be booked at the latest 15 minutes before the screening begins.");
 		} else {

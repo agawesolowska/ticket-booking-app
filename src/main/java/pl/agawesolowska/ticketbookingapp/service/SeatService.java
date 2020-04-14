@@ -1,7 +1,6 @@
 package pl.agawesolowska.ticketbookingapp.service;
 
 import java.util.Optional;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -28,28 +27,34 @@ public class SeatService {
 	}
 
 	@Transactional
-	public Seat reserveSeat(Long id, TicketType ticketType) {
-
+	public Seat getSeatById(Long id) {
 		Optional<Seat> optionalSeat = seatRepository.findById(id);
 		if (optionalSeat.isEmpty()) {
 			throw new IllegalArgumentException("The seat ID is invalid.");
 		} else {
-			Seat seat = optionalSeat.get();
-			if (seat.isReserved()) {
-				throw new IllegalArgumentException("Seat already reserved.");
-			} else {
-				seat.setIsReservedToTrue();
-				seat.setTicketType(ticketType);
-				return seat;
-			}
+			return optionalSeat.get();
 		}
 	}
 
 	@Transactional
-	public void saveReservation(Set<Seat> seatReservations, Booking booking) {
-		for (Seat seatReservation : seatReservations) {
-			seatReservation.setBookingId(booking);
+	public boolean checkWhetherSeatIsAvailable(Seat seat) {
+		if (seat.isReserved()) {
+			throw new IllegalArgumentException("Seat already reserved.");
+		} else {
+			return true;
 		}
+	}
+
+	@Transactional
+	public void setPriceForTicket(Seat seat, TicketType ticketType) {
+		seat.setTicketType(ticketType);
+	}
+
+	@Transactional
+	public Seat reserveSeat(Booking booking, Seat seat) {
+		seat.setIsReservedToTrue();
+		seat.setBooking(booking);
+		return seat;
 	}
 
 }

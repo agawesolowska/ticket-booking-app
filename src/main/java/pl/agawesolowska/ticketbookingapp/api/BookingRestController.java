@@ -25,7 +25,7 @@ public class BookingRestController {
 
 	@PostMapping
 	public @ResponseBody String addCustomerBooking(@Valid @RequestBody BookingRequestDTO bookingRequestDTO) {
-		bookingFacade.seatReservation(bookingRequestDTO);
+		bookingFacade.addCustomerBooking(bookingRequestDTO);
 		return "test"; // TODO change to BookingResultDTO !!!
 	}
 

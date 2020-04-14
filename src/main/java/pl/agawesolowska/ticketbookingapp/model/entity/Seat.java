@@ -45,7 +45,7 @@ public class Seat {
 		this.ticketType = ticketType;
 	}
 
-	public void setBookingId(Booking booking) {
+	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
 

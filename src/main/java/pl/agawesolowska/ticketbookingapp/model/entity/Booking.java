@@ -9,6 +9,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Aga Wesołowska
@@ -16,6 +17,7 @@ import lombok.Getter;
  */
 @Entity
 @Table(name = "booking")
+@NoArgsConstructor
 @Getter
 public class Booking {
 
