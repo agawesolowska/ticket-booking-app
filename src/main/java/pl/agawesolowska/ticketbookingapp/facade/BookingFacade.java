@@ -17,6 +17,7 @@ import pl.agawesolowska.ticketbookingapp.service.CustomerService;
 import pl.agawesolowska.ticketbookingapp.service.ScreeningService;
 import pl.agawesolowska.ticketbookingapp.service.SeatService;
 import pl.agawesolowska.ticketbookingapp.util.DateTimeUtils;
+import pl.agawesolowska.ticketbookingapp.util.SeatReservationUtils;
 
 /**
  * @author Aga Wesołowska
@@ -43,6 +44,9 @@ public class BookingFacade {
 
 		Screening screening = screeningService.getScreeningById(bookingRequestDTO.getScreening().getId());
 		screeningService.checkWhetherReservationIsPossible(screening);
+
+		SeatReservationUtils.checkWhetherSeatsAreNextToEachOther(bookingRequestDTO.getSeatReservations());
+
 		Set<Seat> seatsToBooking = new HashSet<>();
 		for (Seat seatReservation : bookingRequestDTO.getSeatReservations()) {
 			Seat seat = seatService.getSeatById(seatReservation.getId());
