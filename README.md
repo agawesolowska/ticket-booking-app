@@ -15,13 +15,18 @@ The purpose of the project was to build a seat reservation system for a cinema a
 * JavaSE-11, Spring (Boot, Data, REST), JPA & Hibernate, PostgreSQL
 
 ## Setup
-To run this application you need to have [PostgreSQL](https://www.postgresql.org/download/) installed - apart from JVM of course!
+To start with this application you need to have [PostgreSQL](https://www.postgresql.org/download/) installed - apart from JVM of course!
 * Clone or download this repo to your computer. Notice a path of the project directory.
-* Open a terminal and execute command below:
-`psql -h localhost -p 5432 -U postgres -f C:\your-own-path-to-the-project-directory\ticket-booking-app\src\main\resources\sql\sql-script.sql` - it builds the PostgreSQL database with all test data.
+* Open a terminal and execute command below - it builds the PostgreSQL database with all test data.
+```
+psql -h localhost -p 5432 -U postgres -f C:\your-own-path-to-the-project-directory\ticket-booking-app\src\main\resources\sql\sql-script.sql
+```
 * Then go to the project directory in a command line and run the application:
-`C:\your-own-path-to-the-project-directory\ticket-booking-app> .\mvnw spring-boot:run`
+```
+$ .\mvnw spring-boot:run
+```
 * Now you can run the project in a browser or as a [Postman client](https://www.postman.com/).
+* In the project root directory, you will find a curl script with use case endpoints.
 
 ## Features
 * The system covers a single cinema with multiple rooms.
