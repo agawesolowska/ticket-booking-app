@@ -31,7 +31,7 @@ To run this application you need to have [PostgreSQL](https://www.postgresql.org
 - To book tickets customer chooses a particular screening, seats, ticket types and also has to provide personal information (name, e-mail address and optionally voucher code which gives a 50% discount).
 * Provided name and surname should be at least three characters long and start with a capital letter. The surname could also consist of two parts separated with a single dash. Keep in mind the second part should also start with a capital letter.
 * The system gives back the total amount to pay and reservation expiration time as a JSON.
-- @PostMapping in the REST controller is the only way to book tickets, as a valid request body.
+* @PostMapping in the REST controller is the only way to book tickets, as a valid request body.
 * HTTP methods such as POST, PUT and DELETE are disabling for the particular entities - but of course, the GET method is available to get information about screenings, seats, etc.
 
 ## Contact
