@@ -74,8 +74,7 @@ public class BookingFacade {
 			totalCost = totalCost.multiply(BigDecimal.valueOf(0.5));
 		}
 
-		BookingResultDTO bookingResultDTO = new BookingResultDTO(totalCost, screening.getScreeningExpirationDateTime());
-		return bookingResultDTO;
+		return new BookingResultDTO(totalCost, screening.getScreeningExpirationDateTime());
 	}
 
 }

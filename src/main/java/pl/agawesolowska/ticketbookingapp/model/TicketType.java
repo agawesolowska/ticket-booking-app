@@ -15,10 +15,10 @@ public enum TicketType {
 
 	@JsonProperty("adult")
 	ADULT(BigDecimal.valueOf(25)),
-	
+
 	@JsonProperty("student")
 	STUDENT(BigDecimal.valueOf(18)),
-	
+
 	@JsonProperty("child")
 	CHILD(BigDecimal.valueOf(12.50));
 
@@ -28,21 +28,7 @@ public enum TicketType {
 		this.price = price;
 	}
 
-	public void setWeekendPrice(TicketType type) {
-		switch (type) {
-		case ADULT:
-			this.price = BigDecimal.valueOf(29);
-			break;
-		case STUDENT:
-			this.price = BigDecimal.valueOf(22);
-			break;
-		case CHILD:
-			this.price = BigDecimal.valueOf(16.50);
-			break;
-		}
-	}
-
-	public String toString(TicketType type) {
+	public static String ticketValueToString(TicketType type) {
 		switch (type) {
 		case ADULT:
 			return "25 PLN";
