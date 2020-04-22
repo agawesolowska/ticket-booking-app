@@ -9,6 +9,8 @@ import pl.agawesolowska.ticketbookingapp.dao.CustomerRepository;
 import pl.agawesolowska.ticketbookingapp.model.entity.Customer;
 
 /**
+ * Service layer that allows saving customers.
+ * 
  * @author Aga Wesołowska
  *
  */

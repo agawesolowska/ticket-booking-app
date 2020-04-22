@@ -1,7 +1,6 @@
 package pl.agawesolowska.ticketbookingapp.service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -12,6 +11,8 @@ import pl.agawesolowska.ticketbookingapp.dao.ScreeningRepository;
 import pl.agawesolowska.ticketbookingapp.model.entity.Screening;
 
 /**
+ * Service layer that allows finding information about screenings.
+ * 
  * @author Aga Wesołowska
  *
  */
@@ -27,12 +28,8 @@ public class ScreeningService {
 
 	@Transactional
 	public Screening getScreeningById(Long id) {
-		Optional<Screening> optionalScreening = screeningRepository.findById(id);
-		if (optionalScreening.isEmpty()) {
-			throw new IllegalArgumentException("The screening ID is invalid.");
-		} else {
-			return optionalScreening.get();
-		}
+		return screeningRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("The screening ID is invalid."));
 	}
 
 	@Transactional

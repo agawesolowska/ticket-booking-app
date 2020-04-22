@@ -7,10 +7,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
+ * Data Transfer Object class that allows giving back the total amount to pay
+ * and reservation expiration time as a JSON.
+ * 
  * @author Aga Wesołowska
  *
  */
-@Getter @Setter
+@Getter
+@Setter
 public class BookingResultDTO {
 
 	private BigDecimal totalCost;

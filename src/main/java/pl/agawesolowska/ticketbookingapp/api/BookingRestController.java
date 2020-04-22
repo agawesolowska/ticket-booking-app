@@ -10,6 +10,9 @@ import pl.agawesolowska.ticketbookingapp.model.dto.BookingRequestDTO;
 import pl.agawesolowska.ticketbookingapp.model.dto.BookingResultDTO;
 
 /**
+ * Rest Controller responding to POST HTTP request which is a customer booking.
+ * Thanks to Spring Data REST a GET method is available to get information about screenings, seats, etc.
+ * 
  * @author Aga Wesołowska
  *
  */

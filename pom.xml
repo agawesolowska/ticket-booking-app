@@ -12,9 +12,9 @@
 	</parent>
 
 	<groupId>pl.agawesolowska.ticketbookingapp</groupId>
-	<artifactId>Ticket-Booking-App</artifactId>
+	<artifactId>GitHub-ticket-booking-app</artifactId>
 	<version>1.0.2.RELEASE</version>
-	<name>Ticket Booking App</name>
+	<name>GitHub-ticket-booking-app</name>
 	<description>Seat reservation system for a cinema (REST service)</description>
 
 	<properties>

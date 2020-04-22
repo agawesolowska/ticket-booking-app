@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 /**
+ * Enum class representing ticket types.
+ * 
  * @author Aga Wesołowska
  *
  */

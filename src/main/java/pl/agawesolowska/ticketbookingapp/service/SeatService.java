@@ -1,7 +1,5 @@
 package pl.agawesolowska.ticketbookingapp.service;
 
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,8 @@ import pl.agawesolowska.ticketbookingapp.model.entity.Booking;
 import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 
 /**
+ * Service layer that allows booking seats.
+ * 
  * @author Aga Wesołowska
  *
  */
@@ -28,12 +28,8 @@ public class SeatService {
 
 	@Transactional
 	public Seat getSeatById(Long id) {
-		Optional<Seat> optionalSeat = seatRepository.findById(id);
-		if (optionalSeat.isEmpty()) {
-			throw new IllegalArgumentException("The seat ID is invalid.");
-		} else {
-			return optionalSeat.get();
-		}
+		return seatRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("The seat ID is invalid."));
 	}
 
 	@Transactional

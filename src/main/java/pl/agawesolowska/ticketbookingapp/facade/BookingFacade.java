@@ -21,6 +21,8 @@ import pl.agawesolowska.ticketbookingapp.util.DateTimeUtils;
 import pl.agawesolowska.ticketbookingapp.util.SeatReservationUtils;
 
 /**
+ * The facade that connects particular services and implements the project's assumptions.
+ * 
  * @author Aga Wesołowska
  *
  */
@@ -43,34 +45,36 @@ public class BookingFacade {
 
 	public BookingResultDTO addCustomerBooking(BookingRequestDTO bookingRequestDTO) {
 
-		Screening screening = screeningService.getScreeningById(bookingRequestDTO.getScreening().getId());
+		Long screeningIdFromBookingRequest = bookingRequestDTO.getScreening().getId();
+		Screening screening = screeningService.getScreeningById(screeningIdFromBookingRequest);
 		screeningService.checkWhetherReservationIsPossible(screening);
 
-		SeatReservationUtils.checkWhetherSeatsAreNextToEachOther(bookingRequestDTO.getSeatReservations());
+		Set<Seat> seatReservationsFromBookingRequest = bookingRequestDTO.getSeatReservations();
+		SeatReservationUtils.checkWhetherSeatsAreNextToEachOther(seatReservationsFromBookingRequest);
 
 		Set<Seat> seatsToBooking = new HashSet<>();
-		for (Seat seatReservation : bookingRequestDTO.getSeatReservations()) {
+		for (Seat seatReservation : seatReservationsFromBookingRequest) {
 			Seat seat = seatService.getSeatById(seatReservation.getId());
 			seatService.checkWhetherSeatIsAvailable(seat);
 			seatService.setPriceForTicket(seat, seatReservation.getTicketType());
 			seatsToBooking.add(seat);
 		}
 
-		Customer customer = bookingRequestDTO.getCustomer();
-		customerService.saveCustomer(customer);
-		Booking booking = new Booking(seatsToBooking, customer);
-		bookingService.saveBooking(booking);
+		Customer customerFromBookingRequest = bookingRequestDTO.getCustomer();
+		customerService.saveCustomer(customerFromBookingRequest);
+		Booking customerBooking = new Booking(seatsToBooking, customerFromBookingRequest);
+		bookingService.saveBooking(customerBooking);
 
 		BigDecimal totalCost = BigDecimal.ZERO;
 		for (Seat seat : seatsToBooking) {
-			seatService.reserveSeat(booking, seat);
+			seatService.reserveSeat(customerBooking, seat);
 			BigDecimal ticketPrice = seat.getTicketType().getPrice();
 			totalCost = totalCost.add(ticketPrice);
 			if (DateTimeUtils.isWeekend(screening.getScreeningDateTime())) {
 				totalCost = totalCost.add(BigDecimal.valueOf(4.0));
 			}
 		}
-		if (customer.getVoucher() != null) {
+		if (customerFromBookingRequest.getVoucher() != null) {
 			totalCost = totalCost.multiply(BigDecimal.valueOf(0.5));
 		}
 

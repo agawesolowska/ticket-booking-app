@@ -11,12 +11,15 @@ import pl.agawesolowska.ticketbookingapp.model.entity.Screening;
 import pl.agawesolowska.ticketbookingapp.model.entity.Seat;
 
 /**
+ * Data Transfer Object class that allows sending booking information as JSON.
+ * 
  * @author Aga Wesołowska
  *
  */
-@Getter @Setter
+@Getter
+@Setter
 public class BookingRequestDTO {
-	
+
 	@NotNull
 	private Screening screening;
 
